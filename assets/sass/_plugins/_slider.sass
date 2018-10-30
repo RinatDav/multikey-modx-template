@@ -1,71 +1,99 @@
-//Slider default style
+.slider-sect
+	width: 100%
 .slider
+	width: 100%
 	position: relative
-	cursor: pointer
-	z-index: 999
-.viewport
-	width: 100%
-	overflow: hidden
-.slide-line
-	transition: 0.5s
-.slide
-	float: left
-.slide-item
-	width: 100%
-	opacity: 0
-	transition: 1s
-	padding: 10px
-	background-color: lighten($a, 30%)
-.active-slide
-	.slide-item
-		opacity: 1
-.control
-	cursor: pointer
-	position: absolute
-	z-index: 300
-	transition: 0.5s
-	top: 0
-	&:hover
-		transform: scale(1.2)
-.prev
-	left: -50px
-.next
-	right: -50px
+	.viewport
+		width: 100%
+		overflow: hidden
+		height: 100%
+		.slide-line
+			height: 100%
+			display: flex
+			flex-flow: row wrap
+			transition: transform 0.5s
+			.slide-item
+				pointer-events: none
+				user-select: none
+				padding: $space 0
+				text-align: center
+				transition: 0.5s
+				opacity: 0
+			.slide-active
+				opacity: 1
+	.nav
+		position: absolute
+		top: 0
+		bottom: 0
+		margin: auto
+		transition: 0.5s
+		z-index: 100
+		&:hover
+			transform: scale(1.2)
+	.prev
+		height: 20px
+		width: 20px
+		cursor: pointer
+		left: -30px
+		&::after
+			content: ''
+			position: absolute
+			height: 20px
+			width: 20px
+			border:
+				bottom: 2px solid $d
+				left: 2px solid $d
+			transform: rotate(45deg)
+	.next
+		height: 20px
+		width: 20px
+		cursor: pointer
+		right: -30px
+		&::after
+			content: ''
+			position: absolute
+			height: 20px
+			width: 20px
+			border:
+				top: 2px solid $d
+				right: 2px solid $d
+			transform: rotate(45deg)
+	.dots
+		position: absolute
+		width: 100%
+		display: flex
+		justify-content: center
+		bottom: -40px
+		.dot
+			width: 10px
+			height: 10px
+			border-radius: 50px
+			transition: 0.5s
+			background-color: $d
+			margin: 0 10px
+			cursor: pointer
+			&:hover
+				transform: scale(1.4)
+		.dot-active
+			transform: scale(1.4)
+.center-mode
+	.viewport
+		overflow: visible
+		.slide-line
+			.slide-item
+				opacity: 1
+			.center-element
+				transform: scale(1.4)
 
-.slider-dots
-	bottom: -30px
+.slider-1
 	width: 100%
-	padding-top: 20px
-	left: 0
-	display: flex
-	justify-content: flex-start
-	align-items: center
-	transition: 0.5s
-.dot
-	width: 6px
-	height: 6px
-	background-color: $d
-	margin: 0 20px 0 0
-	border-radius: 20px
-	cursor: pointer
-	transition: 0.2s
-	&:hover
-		transform: scale(2)
-.dot-active
-	transform: scale(2)
-	justify-content: space-around
-	align-items: center
-
-.filter
-	display: flex
-	justify-content: space-around
-	align-items: center
-	width: 100%
-	padding-top: 30px
-.filter-link
-	color: $d
-	transition: 0.5s
-	&:hover
-		color: $a
-.filter-active
-	color: $a
+	.viewport
+		.slide-line
+			.slide-item
+				background-color: #ff00ff
+.slider-2
+	width: 80%
+	.viewport
+		.slide-line
+			.slide-item
+				background-color: #ff0
